@@ -9,6 +9,7 @@ public class EulerSolutions {
 	Find the sum of all the multiples of 3 or 5 below 1000.
 	*/
 	public int Euler1(){
+		long startTime = System.currentTimeMillis();
 		int sum = 0;
 		int i;
 		System.out.println("The Answer for Question 1 is");
@@ -22,6 +23,8 @@ public class EulerSolutions {
 			sum -= i;
 		}
 		System.out.println(sum);
+		long stopTime = System.currentTimeMillis();
+		System.out.println("Elapsed time: " + String.valueOf(stopTime-startTime) + " ms");
 		return sum;
 	}
 	
@@ -33,6 +36,7 @@ public class EulerSolutions {
 	do not exceed four million, find the sum of the even-valued terms.
 	*/
 	public long Euler2(){
+		long startTime = System.currentTimeMillis();
 		long sum = 0;
 		int fiboCurrent = 1;
 		int fiboPrev = 1;
@@ -45,6 +49,8 @@ public class EulerSolutions {
 			}
 		}
 		System.out.println(sum);
+		long stopTime = System.currentTimeMillis();
+		System.out.println("Elapsed time: " + String.valueOf(stopTime-startTime) + " ms");
 		return sum;
 	}
 	
@@ -57,11 +63,6 @@ public class EulerSolutions {
 			if(number%i == 0){
 				return false;
 			}
-			/*if(IsPrime(i)){
-				if((number%i) == 0){
-					return false;
-				}
-			}*/
 		}
 		return true;
 	}
@@ -72,9 +73,6 @@ public class EulerSolutions {
 		}
 		long sqrt = (long)Math.sqrt(number);
 		for(long i=3; i<=sqrt; i+=2){
-			/*if(number%i == 0){
-				return false;
-			}*/
 			if(IsPrime(i)){
 				if((number%i) == 0){
 					return false;
@@ -101,11 +99,14 @@ public class EulerSolutions {
 	}
 	
 	public long Euler3(){
+		long startTime = System.currentTimeMillis();
 		long number = 600851475143L;
 		ArrayList<Long> dividers = Dividers(number);
 		int numOfDividers = dividers.size();
 		System.out.println("The answer for Question 3 is");
 		System.out.println(String.valueOf(dividers.get(numOfDividers-1)));
+		long stopTime = System.currentTimeMillis();
+		System.out.println("Elapsed time: " + String.valueOf(stopTime-startTime) + " ms");
 		return dividers.get(numOfDividers-1);
 	}
 	
@@ -141,6 +142,7 @@ public class EulerSolutions {
 	}
 	
 	public int Euler4(){
+		long startTime = System.currentTimeMillis();
 		int max = 0;
 		int product;
 		for(int i=999; i>99; i--){
@@ -156,6 +158,8 @@ public class EulerSolutions {
 		}
 		System.out.println("The answer for Question 4 is");
 		System.out.println(String.valueOf(max));
+		long stopTime = System.currentTimeMillis();
+		System.out.println("Elapsed time: " + String.valueOf(stopTime-startTime) + " ms");
 		return max;
 	}
 	
@@ -171,26 +175,19 @@ public class EulerSolutions {
 	}
 	
 	public int Euler5(){
-		//ArrayList<Integer> primes = new ArrayList<Integer>();
-		//ArrayList<Integer> powers = new ArrayList<Integer>();
 		long startTime = System.currentTimeMillis();
 		int threshold = 10;
 		int number = 1;
-		//primes.add(2);
-		//powers.add(FindPowerLessThan(2, threshold));
 		number *= Math.pow(2, FindPowerLessThan(2, threshold));
 		for(int prime=3; prime<threshold; prime+=2){
 			if(IsPrime(prime)){
-				//primes.add(prime);
-				//powers.add(FindPowerLessThan(prime, threshold));
 				number*= Math.pow(prime, FindPowerLessThan(prime, threshold));
 			}
 		}
-		System.out.println("The answer for Question 4 is");
+		System.out.println("The answer for Question 5 is");
 		System.out.println(String.valueOf(number));
 		long stopTime = System.currentTimeMillis();
-		System.out.println("Elapsed time:");
-		System.out.printf("%d miliseconds", stopTime - startTime);
+		System.out.println("Elapsed time: " + String.valueOf(stopTime-startTime) + " ms");
 		return number;
 	}
 	
