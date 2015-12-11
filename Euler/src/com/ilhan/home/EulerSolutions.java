@@ -8,11 +8,28 @@ public class EulerSolutions {
 	we get 3, 5, 6 and 9. The sum of these multiples is 23.
 	Find the sum of all the multiples of 3 or 5 below 1000.
 	*/
+	
+	private long startTime;
+	private long stopTime;
+	private void StartTimer(){
+		startTime = System.currentTimeMillis();
+	}
+	private void StopTimer(int number){
+		stopTime = System.currentTimeMillis();
+		System.out.println("Elapsed Time For Question " + String.valueOf(number) + " : "  + String.valueOf(stopTime-startTime) + " ms");
+	}
+	private void PrintAnswer(int number, int result){
+		System.out.println("The Answer for Question " + String.valueOf(number) + " is " + String.valueOf(result));
+	}
+	private void PrintAnswer(int number, long result){
+		System.out.println("The Answer for Question " + String.valueOf(number) + " is " + String.valueOf(result));
+	}
+	
+	
 	public int Euler1(){
-		long startTime = System.currentTimeMillis();
+		StartTimer();
 		int sum = 0;
 		int i;
-		System.out.println("The Answer for Question 1 is");
 		for(i=3; i<1000; i=i+3){
 			sum += i;
 		}
@@ -22,9 +39,8 @@ public class EulerSolutions {
 		for(i=15; i<1000; i=i+15){
 			sum -= i;
 		}
-		System.out.println(sum);
-		long stopTime = System.currentTimeMillis();
-		System.out.println("Elapsed time: " + String.valueOf(stopTime-startTime) + " ms");
+		PrintAnswer(1,sum);
+		StopTimer(1);
 		return sum;
 	}
 	
@@ -36,11 +52,10 @@ public class EulerSolutions {
 	do not exceed four million, find the sum of the even-valued terms.
 	*/
 	public long Euler2(){
-		long startTime = System.currentTimeMillis();
+		StartTimer();
 		long sum = 0;
 		int fiboCurrent = 1;
 		int fiboPrev = 1;
-		System.out.println("The Answer for Question 2 is");
 		while(fiboCurrent < 4000000){
 			fiboCurrent += fiboPrev;
 			fiboPrev = fiboCurrent - fiboPrev;
@@ -48,14 +63,16 @@ public class EulerSolutions {
 				sum += fiboCurrent;
 			}
 		}
-		System.out.println(sum);
-		long stopTime = System.currentTimeMillis();
-		System.out.println("Elapsed time: " + String.valueOf(stopTime-startTime) + " ms");
+		PrintAnswer(2,sum);
+		StopTimer(2);
 		return sum;
 	}
 	
 	private boolean IsPrime(long number){
-		if(((number%2) == 0) & (number != 2)){
+		if(((number%2) == 0)){
+			if(number==2){
+				return true;
+			}
 			return false;
 		}
 		long sqrt = (long)Math.sqrt(number);
@@ -99,14 +116,12 @@ public class EulerSolutions {
 	}
 	
 	public long Euler3(){
-		long startTime = System.currentTimeMillis();
+		StartTimer();
 		long number = 600851475143L;
 		ArrayList<Long> dividers = Dividers(number);
 		int numOfDividers = dividers.size();
-		System.out.println("The answer for Question 3 is");
-		System.out.println(String.valueOf(dividers.get(numOfDividers-1)));
-		long stopTime = System.currentTimeMillis();
-		System.out.println("Elapsed time: " + String.valueOf(stopTime-startTime) + " ms");
+		PrintAnswer(3, dividers.get(numOfDividers-1));
+		StopTimer(3);
 		return dividers.get(numOfDividers-1);
 	}
 	
@@ -142,7 +157,7 @@ public class EulerSolutions {
 	}
 	
 	public int Euler4(){
-		long startTime = System.currentTimeMillis();
+		StartTimer();
 		int max = 0;
 		int product;
 		for(int i=999; i>99; i--){
@@ -156,10 +171,8 @@ public class EulerSolutions {
 				}
 			}
 		}
-		System.out.println("The answer for Question 4 is");
-		System.out.println(String.valueOf(max));
-		long stopTime = System.currentTimeMillis();
-		System.out.println("Elapsed time: " + String.valueOf(stopTime-startTime) + " ms");
+		PrintAnswer(4, max);
+		StopTimer(4);
 		return max;
 	}
 	
@@ -175,7 +188,7 @@ public class EulerSolutions {
 	}
 	
 	public int Euler5(){
-		long startTime = System.currentTimeMillis();
+		StartTimer();
 		int threshold = 20;
 		int number = 1;
 		number *= Math.pow(2, FindPowerLessThan(2, threshold));
@@ -184,11 +197,36 @@ public class EulerSolutions {
 				number*= Math.pow(prime, FindPowerLessThan(prime, threshold));
 			}
 		}
-		System.out.println("The answer for Question 5 is");
-		System.out.println(String.valueOf(number));
-		long stopTime = System.currentTimeMillis();
-		System.out.println("Elapsed time: " + String.valueOf(stopTime-startTime) + " ms");
+		PrintAnswer(5, number);
+		StopTimer(5);
 		return number;
 	}
 	
+	public int Euler6(){
+		StartTimer();
+		int sumOfSquares = (2*100+1)*(100+1)*100/6;		//(2n+1)(n+1)n/6 = sum(i^2) for i=1..n
+		int sumOfNumbers = 100*101/2;					//n(n+1)/2 = sum(i) for i=1..n
+		int difference = (int)(Math.pow(sumOfNumbers,2)-sumOfSquares);
+		PrintAnswer(6,difference);
+		StopTimer(6);
+		return difference;
+	}
+	
+	public int Euler7(){
+		StartTimer();
+		int i=3;
+		int numOfPrimes = 1;
+		while(true){
+			if(IsPrime(i)){
+				numOfPrimes++;
+				if(numOfPrimes == 10001){
+					break;
+				}
+			}
+			i+=2;
+		}
+		PrintAnswer(7,i);
+		StopTimer(7);
+		return i;
+	}
 }

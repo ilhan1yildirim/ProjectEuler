@@ -9,5 +9,7 @@ public class Euler {
 		eulerSolutions.Euler3();
 		eulerSolutions.Euler4();
 		eulerSolutions.Euler5();
+		eulerSolutions.Euler6();
+		eulerSolutions.Euler7();
 	}
 }
