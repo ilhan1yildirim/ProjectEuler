@@ -176,7 +176,7 @@ public class EulerSolutions {
 	
 	public int Euler5(){
 		long startTime = System.currentTimeMillis();
-		int threshold = 10;
+		int threshold = 20;
 		int number = 1;
 		number *= Math.pow(2, FindPowerLessThan(2, threshold));
 		for(int prime=3; prime<threshold; prime+=2){
