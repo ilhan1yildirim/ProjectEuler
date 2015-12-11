@@ -84,20 +84,6 @@ public class EulerSolutions {
 		return true;
 	}
 	
-	public boolean asalTest(long number){
-		long startTime = System.currentTimeMillis();
-		boolean a = IsPrime(number);
-		System.out.println(String.valueOf(a));
-		long stopTime = System.currentTimeMillis();
-		System.out.printf("%d miliseconds elapsed for non-recursive\n", stopTime-startTime);
-		startTime = System.currentTimeMillis();
-		a = IsPrimeRecursive(number);
-		System.out.println(String.valueOf(a));
-		stopTime = System.currentTimeMillis();
-		System.out.printf("%d miliseconds elapsed for recursive\n", stopTime-startTime);
-		return true;
-	}
-	
 	private ArrayList<Long> Dividers(long number){
 		ArrayList<Long> dividerArray = new ArrayList<Long>();
 		long sqrt = (long)Math.sqrt(number);
